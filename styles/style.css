@@ -121,3 +121,6 @@ html, body{
         justify-content: space-between;
     } 
 }
+.escondido{
+    display: none;
+}

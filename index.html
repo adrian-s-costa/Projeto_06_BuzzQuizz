@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/styleT3.css">
     <link rel="stylesheet" href="styles/reset.css">
     <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700&family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <title>Buzz Quizz</title>
@@ -13,7 +14,9 @@
     <header>
         <div class="topo"> <h1 class="logo">BuzzQuizz</h1> </div>
     </header>
-    <main>
+
+    <!-- TELA 1 -->
+    <main class="tela1">
         <div class="pagina">
             <div class="delimitador">
                 <div class="quizzesCriados">
@@ -21,7 +24,7 @@
                     <button class="criarQuizz">Criar Quizz</button>
                 </div>
 
-<!-- Quando tiver quizzes criados pelo usuário já tem aqui o template pronto-->
+    <!-- Quando tiver quizzes criados pelo usuário já tem aqui o template pronto-->
                 
         <div class="quizzesLista userQuizzes">
                         <div>
@@ -66,8 +69,26 @@
                 </div>
             </div>
     </main>
+    <main class="tela2 escondido"></main>
+    <main class="tela3">
+        <section class="tela3-1">
+            <h1>Comece pelo começo</h1>
+            <div>
+                <input type="text" id="titulo" placeholder="Título do seu quizz">
+                <input type="text" name="" id="url-principal">
+                <input type="text" name="" id="">
+                <input type="text" name="" id="">
+            </div>
+        </section>
+
+        <section class="tela3-2"></section>
+        <section class="tela3-3"></section>
+        <section class="tela3-4"></section>
+    </main>
+
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="./scripts/script.tela3.js"></script>
 </body>
 </html>
