@@ -11,6 +11,10 @@ html, body{
     align-items: center;
     background: #EC362D;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
 }
 
 .logo{
@@ -19,6 +23,7 @@ html, body{
     font-size: 37px;
     line-height: 43px;
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .pagina{
@@ -64,6 +69,13 @@ html, body{
     border-radius: 50px;
     color: #EC362D;
     font-size: 21px;
+    cursor: pointer;
+    transition: 0.5s ease-out;
+}
+
+.criarQuizz:hover{
+    background: #EC362D;
+    color: #FAFAFA;
 }
 
 .quizzesLista{
@@ -87,11 +99,15 @@ html, body{
 .quizz{
     width: 340px;
     height: 181px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(image.png);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
     border-radius: 5px;
     margin: 6px 7.5px;
+    background-size: cover;
     position: relative;
+    cursor: pointer;
 }
+
+
 
 .quizz p {
     left: 20px;
@@ -109,7 +125,7 @@ html, body{
     width: 31px;
     height: 30px;
     margin-left: 4px;
-    
+    cursor: pointer;
 }
 
 .quizzesLista div {
@@ -124,3 +140,28 @@ html, body{
 .escondido{
     display: none;
 }
+.userQuizzes div > p{
+    padding-top: 4px;
+}
+
+.header{
+    padding-top: 76px;
+}
+
+.imagemQuiz{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 227px;
+    width: 100%;
+}
+
+.quizTitle{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 39px;
+    line-height: 46px;
+    color: #FFFFFF;
+}
+
