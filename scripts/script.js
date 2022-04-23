@@ -12,6 +12,14 @@ let quizzesInfo, quizCard;
 
 function carregarPag() {
 
+<<<<<<< HEAD
+=======
+const gradient = `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%)`;
+let quizzesInfo, quizCard;
+
+function carregarPag() {
+
+>>>>>>> 3168251fae898e52ca029002d9d23c0cda5ef0c4
     conteudoPag.innerHTML = "";
     const pagInicial = `
     <main class="pagina">
@@ -67,6 +75,7 @@ function exibirQuizzes() {
             quizzesInfo = resposta.data
             console.log(lugarQuizzes)
             lugarQuizzes.innerHTML = ""
+<<<<<<< HEAD
             for (let i = 0; i < quizzesInfo.length; i++) {
 
                 lugarQuizzes.innerHTML += `
@@ -78,6 +87,20 @@ function exibirQuizzes() {
                 quizCard = document.querySelector(`.quizzes.todos li:nth-child(${i + 1})`)
                 quizCard.style.setProperty("background-image", `${gradient}, url('${quizzesInfo[i].image}')`);
                 
+=======
+
+            for (let i = 0; i < quizzesInfo.length; i++) {
+
+                lugarQuizzes.innerHTML += `<li class="quizz" onclick = "pegarID(this)">
+            <p class = "nomeQuiz">${quizzesInfo[i].title}</p>
+            <span class = "idQuiz hidden"> ${quizzesInfo[i].id} </span>
+            </li>`
+
+                quizCard = document.querySelector(`.quizzes.todos li:nth-child(${i + 1})`)
+
+                quizCard.style.setProperty("background-image", `${gradient}, url('${quizzesInfo[i].image}')`);
+
+>>>>>>> 3168251fae898e52ca029002d9d23c0cda5ef0c4
             }
         })
 }
@@ -101,6 +124,10 @@ function pegarID(quizClicado) {
 }
 
 function mostrarQuiz() {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3168251fae898e52ca029002d9d23c0cda5ef0c4
     conteudoPag.innerHTML = ""
     conteudoPag.innerHTML = `<div class = "imagemQuiz"> </div>`
     const gradient2 = "linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57))"

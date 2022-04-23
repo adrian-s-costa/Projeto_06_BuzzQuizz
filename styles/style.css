@@ -132,6 +132,11 @@ html, body{
     display: flex;
 }
 
+@media (max-width: 1000px){
+    .quizzesLista div {
+        justify-content: space-between;
+    } 
+}
 .escondido{
     display: none;
 }
@@ -149,9 +154,6 @@ html, body{
     justify-content: center;
     height: 227px;
     width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
 }
 
 .quizTitle{
