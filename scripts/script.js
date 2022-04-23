@@ -28,7 +28,7 @@ function carregarPag() {
                     
                 <div class="quizzesLista userQuizzes">
                     <div>
-                        <p>Seus Quizzes</p><ion-icon class="icon" name="add-circle" onclick = "telaCriarQuiz()"></ion-icon>
+                        <p>Seus Quizzes</p><ion-icon class="icon" name="add-circle" onclick = "criarQuiz()"></ion-icon>
                     </div>
                         <ul class="quizzes">
                                 
