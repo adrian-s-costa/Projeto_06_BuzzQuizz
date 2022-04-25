@@ -30,7 +30,8 @@ function validarInfos() {
     numPerguntas = document.getElementById("quantidade-de-perguntas").value;
     numNiveis = document.getElementById("quantidade-de-niveis").value;
     if (tituloQuizz.length >= 20 && tituloQuizz.length <= 65) {
-        if (urlPrincipal != "") {
+        const regexUrlPrincipal = urlPrincipal.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+        if (urlPrincipal == regexUrlPrincipal) {
             console.log("ulr passou");
 
             if (numPerguntas >= 3) {

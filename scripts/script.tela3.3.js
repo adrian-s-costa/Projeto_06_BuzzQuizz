@@ -50,7 +50,8 @@ function validarNiveis() {
         else { alert("A porcentagem de acerto deve ser um numeo de 0 a 100") }
 
         //fazer direito
-        if (url != "") { etapas++; }
+        const regexUrl = url.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+        if (url == regexUrl) { etapas++; }
         else { alert("Insira uma url valida") }
 
         if (descricao.length > 29) { etapas++; }
@@ -70,20 +71,22 @@ function requisitosNiveis() {
     let nenhumaIgualdade = true;
     for (let i = 1; i <= numNiveis; i++) {
         const porcentagem = document.getElementById(`porcentagemNivel${i}`).value;
-        if (porcentagem == 0) {
-            igualAzero = true;
-        } else{alert("Um dos niveis deve ter porcentagem de acertos igual a zero")}
-        for(let j = 1; j<= numNiveis;j++){
+        if (igualAzero == false) {
+            if (porcentagem == 0) {
+                igualAzero = true;
+            } else { alert("Um dos niveis deve ter porcentagem de acertos igual a zero") }
+        }
+        for (let j = 1; j <= numNiveis; j++) {
             const outraPorcentagem = document.getElementById(`porcentagemNivel${j}`).value;
-            if(j != i){
-                if(porcentagem == outraPorcentagem){
+            if (j != i) {
+                if (porcentagem == outraPorcentagem) {
                     nenhumaIgualdade = false;
                     alert("há dois niveis com o mesmo valor mínimo");
                 }
             }
         }
     }
-    if(igualAzero == true && nenhumaIgualdade == true){
+    if (igualAzero == true && nenhumaIgualdade == true) {
         sucessoDoQuizz();
     }
 }

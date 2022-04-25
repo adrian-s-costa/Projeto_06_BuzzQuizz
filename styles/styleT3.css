@@ -84,9 +84,7 @@ body{
 }
 .dinamico{
     margin-bottom: 22px;
-    width: 375px;
-    
-   
+    width: 375px;   
 }
 .dinamico button{
     display: block;
@@ -118,6 +116,71 @@ body{
     height: 177px;
     
 }
+.block{
+    display: block;
+}
+.acessar-quizz{
+    width: 340px;
+    height: 44px;
+    background: #EC362D;
+    border-radius: 15px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #FFF5F4;
+    border: none;
+}
+.voltar-inicio{
+    width: 340px;
+    height: 44px;
+    font-family: 'Roboto';
+    justify-content: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #818181;
+    background-color: #fafafa;
+    border: none;
+}
+.sucesso-capa-do-quizz{
+    width: 340px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.62%, rgba(0, 0, 0, 0.8) 100%);
+    border-radius: 5px;
+    position: relative;
+}
+.titulo-do-quizz-sucesso{
+    position: absolute;
+    bottom: 20px;
+    left: 17px;
+    width: 306px;
+    display: flex;
+    align-items: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    color: #FFFFFF;
+    z-index: 5;
+}
+.relative{
+    position: relative;
+}
+
+
+
+
+
 .escondido{
     display: none;
 }

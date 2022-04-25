@@ -63,12 +63,31 @@ function validarPerguntas() {
         return value;
     });
     const urlsCorretasValidas = inputDasUrls.filter(texto => {
-        if (texto != "") {
+        const regexUrl = texto.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+        if (texto == regexUrl) {
+            console.log("true mesmo ein");
             return true;
         }
     });
     if (urlsCorretasValidas.length == urlsCorretas.length) { validacao++ }
     else { alert("prencha a URL corretamente") }
+
+    // function validarURL(){
+    //     const urlQuizz = document.querySelector('.url-quizz').value;
+    //     const res = urlQuizz.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
+    //     if(res == urlQuizz){
+    //         console.log("Deu certo demais");
+    //         mudardetela += 1;
+    //         return urlQuizz;
+    //     }else{
+    //         alert("URL Inválida");
+    //         mudardetela = false;
+    //     }
+    // }
+    
+    
+
+
 
     //validar respostas erradas
     const numeroDePerguntas = perguntas.length;
@@ -82,12 +101,11 @@ function validarPerguntas() {
 
             // validar urls erradas i
             const urlErrada = perguntaX.querySelector(`.url-errada${i}`).value;
-            console.log(urlErrada);
+            const regexUrlErrada = urlErrada.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
 
-            if (respostasErradas != "" && urlErrada != "") {
+            if (respostasErradas != "" && urlErrada == regexUrlErrada) {
                 caminhoValidacaoErradas++;
             }
-
         }
         if (caminhoValidacaoErradas > 0) { { perguntaComIncorreta++ } }
 
