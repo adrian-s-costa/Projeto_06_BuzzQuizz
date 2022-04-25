@@ -357,6 +357,9 @@ function reiniciarQuiz(){
         elemento.classList.remove("naoSelecionada")
     }
 
+    uno = 0
+
+
     mostrarQuiz()
 
 }
