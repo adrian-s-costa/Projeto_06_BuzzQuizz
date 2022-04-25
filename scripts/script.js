@@ -7,8 +7,6 @@ cardQuiz = {
     titulo: 0,
     imagem: 0,
 }
-
-
 const gradient = `linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%)`;
 let quizzesInfo, quizCard;
 
@@ -28,7 +26,7 @@ function carregarPag() {
                     
                 <div class="quizzesLista userQuizzes">
                     <div>
-                        <p>Seus Quizzes</p><ion-icon class="icon" name="add-circle" onclick = "criarQuiz()"></ion-icon>
+                        <p>Seus Quizzes</p><ion-icon class="icon" name="add-circle" onclick = "criarQuizz()"></ion-icon>
                     </div>
                         <ul class="quizzes">
                                 
@@ -69,18 +67,17 @@ function exibirQuizzes() {
             quizzesInfo = resposta.data
             console.log(lugarQuizzes)
             lugarQuizzes.innerHTML = ""
-
             for (let i = 0; i < quizzesInfo.length; i++) {
 
-                lugarQuizzes.innerHTML += `<li class="quizz" onclick = "pegarID(this)">
-            <p class = "nomeQuiz">${quizzesInfo[i].title}</p>
-            <span class = "idQuiz hidden"> ${quizzesInfo[i].id} </span>
-            </li>`
+                lugarQuizzes.innerHTML += `
+                <li class="quizz" onclick = "pegarID(this)">
+                    <p class = "nomeQuiz">${quizzesInfo[i].title}</p>
+                    <span class = "idQuiz hidden"> ${quizzesInfo[i].id} </span>
+                </li>`
 
                 quizCard = document.querySelector(`.quizzes.todos li:nth-child(${i + 1})`)
-
                 quizCard.style.setProperty("background-image", `${gradient}, url('${quizzesInfo[i].image}')`);
-
+                
             }
         })
 }
@@ -104,14 +101,11 @@ function pegarID(quizClicado) {
 }
 
 function mostrarQuiz() {
-
     conteudoPag.innerHTML = ""
-    conteudoPag.innerHTML = `<header class="header">
-    <div class="topo"> <h1 class="logo" onclick="carregarPag()">BuzzQuizz</h1> </div>
-    </header>`
+    conteudoPag.innerHTML = `<div class = "imagemQuiz"> </div>`
     const gradient2 = "linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57))"
-    const headImage = document.querySelector(".header")
-    headImage.innerHTML += `<div class = "imagemQuiz">
-    <p class = "quizTitle">${cardQuiz.titulo}</p></div>`
+    const headImage = document.querySelector(".imagemQuiz")
+    headImage.innerHTML += `
+    <p class = "quizTitle">${cardQuiz.titulo}</p>`
     headImage.style.setProperty("background-image", `${gradient2}, url('${topoImagemGrande}')`);
 }
