@@ -155,6 +155,7 @@ html, body{
 }
 
 .quizTitle{
+    margin-left: 24px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -198,7 +199,6 @@ html, body{
     font-size: 23px;
     line-height: 27px;
     display: flex;
-    justify-content: center;
     align-items: center;
     color: #FFFFFF;
     position: absolute;
@@ -267,14 +267,14 @@ html, body{
 }
 
 .textoResult{
-    max-width: 50ch;
+    max-width: 30ch;
     overflow: hidden;
     text-overflow: ellipsis;
     
 }
 
 .nomeQuiz{
-    max-width: 27ch;
+    max-width: 10ch;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -286,7 +286,6 @@ html, body{
 .botao{
     width: 260.38px;
     height: 52px;
-    
     border-radius: 15px;
 }
 
@@ -355,7 +354,6 @@ html, body{
         width: 50%;
         height: 50%;
         display: flex;
-        
     }
 
     .textoResult{

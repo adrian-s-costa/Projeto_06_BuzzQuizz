@@ -108,9 +108,14 @@ let quantCertas = 0
 function comparador(){
     return Math.random() -0.5;
 }
-
+let uno = 0
 function mostrarQuiz() {
+<<<<<<< HEAD
     quantCertas = 0;
+=======
+    uno = 0
+    quantCertas = 0
+>>>>>>> 6bb705a29648b9817f8705ff4d2810d1d9f9de47
     conteudoPag.innerHTML = ""
     conteudoPag.innerHTML = `
     <div class = "imagemQuiz"> </div>
@@ -183,7 +188,6 @@ function mostrarQuiz() {
 }
 
 let elementoClicado
-let uno = 0
 
 function respostaClicada(opcaoRespostaClicada){
     
