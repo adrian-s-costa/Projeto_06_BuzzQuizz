@@ -42,19 +42,31 @@ function validarNiveis() {
         const porcentagem = document.getElementById(`porcentagemNivel${i}`).value;
         const url = document.getElementById(`urlNivel${i}`).value;
         const descricao = document.getElementById(`descricaoNivel${i}`).value;
-
-        if (titulo.length > 9) { etapas++; }
+        
+        if (titulo.length > 9) {
+            objetoToPost.levels[i - 1].title = titulo;
+            etapas++;
+        }
         else { alert("O título do nível deve haver pelo menos 10 caracteres") }
 
-        if (porcentagem >= 0 && porcentagem <= 100) { etapas++; }
+        if (porcentagem >= 0 && porcentagem <= 100) {
+            objetoToPost.levels[i - 1].minValue = parseInt(porcentagem);
+            etapas++;
+        }
         else { alert("A porcentagem de acerto deve ser um numeo de 0 a 100") }
 
-        //fazer direito
+
         const regexUrl = url.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
-        if (url == regexUrl) { etapas++; }
+        if (url == regexUrl) {
+            objetoToPost.levels[i - 1].image = url;
+            etapas++;
+        }
         else { alert("Insira uma url valida") }
 
-        if (descricao.length > 29) { etapas++; }
+        if (descricao.length > 29) {
+            objetoToPost.levels[i - 1].text = descricao;
+            etapas++;
+        }
         else { alert("Sua descrição deve ter pelo menos 30 caracteres") }
         if (etapas == 4) {
             nivelOk++;
@@ -87,6 +99,6 @@ function requisitosNiveis() {
         }
     }
     if (igualAzero == true && nenhumaIgualdade == true) {
-        sucessoDoQuizz();
+        postDoMeuQuizz();
     }
 }

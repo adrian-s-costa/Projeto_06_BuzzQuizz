@@ -110,7 +110,7 @@ function comparador(){
 }
 
 function mostrarQuiz() {
-    quantCertas = 0
+    quantCertas = 0;
     conteudoPag.innerHTML = ""
     conteudoPag.innerHTML = `
     <div class = "imagemQuiz"> </div>

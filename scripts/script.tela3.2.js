@@ -1,3 +1,56 @@
+function criarPerguntas() {
+    const tela3 = document.querySelector(".tela3");
+    tela3.innerHTML = `
+    <h1>Crie suas perguntas</h1>
+    <div class="flex-center">  <div class="dinamico"></div> </div>
+    <div class="flex-center">
+        <button class="enter" onclick="validarPerguntas()" >Prosseguir pra criar níveis</button>
+    </div>
+    `;
+
+    for (let i = 1; i <= numPerguntas; i++) {
+        const dinamico = document.querySelector(".dinamico");
+        dinamico.innerHTML += `
+            <article class="cada-pergunta pergunta${i}">
+                <section class="caixa-da-pergunta">
+                    <h2>Pergunta ${i}</h2>
+                    <img onclick="aparecerDadosPerguntas(this)" src="./styles/openList.png" alt="abrir" />
+                </section>
+                <div class="dados escondido">
+                        <div class="inputs">
+                            <input type="text" class="texto-da-pergunta" placeholder="Texto da pergunta">
+                            <input type="text" class="cor-de-fundo" placeholder="Cor de fundo da pergunta">
+                        </div>
+                    <h2>Resposta correta</h2>
+                        <div class="inputs corretas">
+                            <input type="text" class="texto-da-resposta-correta" placeholder="Resposta correta">
+                            <input type="text" class="url-das-respostas url-correta" placeholder="URL da imagem">
+                        </div>
+                    <h2 class"respostas-incorretas>Respostas incorretas</h2>
+                        <div class="inputs incorretas">
+                            <input type="text" class="texto-das-respostas-incorretas1" placeholder="Resposta incorreta 1">
+                            <input type="text" class="url-das-respostas url-errada1" placeholder="URL da imagem 1">
+                        </div>
+                        <div class="inputs incorretas">
+                            <input type="text" class="texto-das-respostas-incorretas2" placeholder="Resposta incorreta 2">
+                            <input type="text" class="url-das-respostas url-errada2" placeholder="URL da imagem 2">
+                        </div>
+                        <div class="inputs incorretas">
+                            <input type="text" class="texto-das-respostas-incorretas3" placeholder="Resposta incorreta 3">
+                            <input type="text" class="url-das-respostas url-errada3" placeholder="URL da imagem 3">
+                        </div>
+                </div>
+            </article>
+        `;
+    }
+}
+function aparecerDadosPerguntas(pergunta) {
+    const section = pergunta.parentNode;
+    const article = section.parentNode;
+    const dados = article.querySelector(".dados");
+    dados.classList.toggle("escondido");
+}
+
 function validarPerguntas() {
     let validacao = 0;
 
@@ -5,7 +58,7 @@ function validarPerguntas() {
     const perguntas = document.querySelectorAll(".texto-da-pergunta");
     const textoDasPerguntas = Array.from(perguntas).map(pergunta => {
         const value = pergunta.value;
-        console.log(value); ''
+        console.log(value);
         return value;
     });
     const perguntasValidas = textoDasPerguntas.filter(texto => {
@@ -13,7 +66,17 @@ function validarPerguntas() {
             return true;
         }
     });
-    if (perguntasValidas.length === perguntas.length) { validacao++; }
+    if (perguntasValidas.length === perguntas.length && objetoToPost.questions.length <= numPerguntas) {
+        //inteirar o post
+
+        let contador = 0;
+        perguntasValidas.forEach(addPergunta => {
+            console.log(objetoToPost);
+            objetoToPost.questions[contador].title = addPergunta;
+            contador++;
+        });
+        validacao++;
+    }
     else { console.log("ainda nao validou"); alert("preencha os textos de pergunta com no mínimo 20 caracteres") }
 
     // validação cores Hexadecimais
@@ -39,7 +102,15 @@ function validarPerguntas() {
         }
     });
     console.log("cores validas = ", coresValidas);
-    if (coresValidas.length === corDeFundo.length) { validacao++; }
+    if (coresValidas.length === corDeFundo.length) {
+        //inteirar o post
+        let contador = 0;
+        coresValidas.forEach(addCor => {
+            objetoToPost.questions[contador].color = addCor;
+            contador++;
+        });
+        validacao++;
+    }
     else { alert("A cor de fundo deve ser no formato hexadecimal") }
 
     // validação texto respostas corretas validas
@@ -53,7 +124,18 @@ function validarPerguntas() {
             return true;
         }
     })
-    if (respostasCorretasValidas.length === respostasCorretas.length) { validacao++ }
+    if (respostasCorretasValidas.length === respostasCorretas.length) {
+        //inteirar o post
+        let contador = 0;
+        let contadorAnswers = 0;
+        coresValidas.forEach(addHexa => {
+            objetoToPost.questions[contador].answers[contadorAnswers].text = addHexa;
+            objetoToPost.questions[contador].answers[contadorAnswers].isCorrectAnswer = true;
+            contador++;
+            contadorAnswers++;
+        });
+        validacao++
+    }
     else { alert("Preencha o texto das respostas corretamente") }
 
     // valicação das url das respostas correstas
@@ -69,41 +151,40 @@ function validarPerguntas() {
             return true;
         }
     });
-    if (urlsCorretasValidas.length == urlsCorretas.length) { validacao++ }
+    if (urlsCorretasValidas.length == urlsCorretas.length) {
+        //inteirar o post
+        let contador = 0;
+        let contadorAnswers = 0;
+        urlsCorretasValidas.forEach(addUrl => {
+            objetoToPost.questions[contador].answers[contadorAnswers].text = addUrl;
+            contador++;
+            contadorAnswers++;
+        });
+        validacao++;
+    }
     else { alert("prencha a URL corretamente") }
-
-    // function validarURL(){
-    //     const urlQuizz = document.querySelector('.url-quizz').value;
-    //     const res = urlQuizz.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
-    //     if(res == urlQuizz){
-    //         console.log("Deu certo demais");
-    //         mudardetela += 1;
-    //         return urlQuizz;
-    //     }else{
-    //         alert("URL Inválida");
-    //         mudardetela = false;
-    //     }
-    // }
-    
-    
-
 
 
     //validar respostas erradas
     const numeroDePerguntas = perguntas.length;
     let perguntaComIncorreta = 0;
-    for (let x = 1; x <= numeroDePerguntas; x++) {
-        const perguntaX = document.querySelector(`.pergunta${x}`);
+    for (let x = 0; x < numeroDePerguntas; x++) {
+        const perguntaX = document.querySelector(`.pergunta${x+1}`);
         let caminhoValidacaoErradas = 0;
         for (let i = 1; i <= 3; i++) {
-            const respostasErradas = perguntaX.querySelector(`.texto-das-respostas-incorretas${i}`).value;
-            console.log(respostasErradas);
+            const respostaErrada = perguntaX.querySelector(`.texto-das-respostas-incorretas${i}`).value;
+            console.log(respostaErrada);
 
             // validar urls erradas i
             const urlErrada = perguntaX.querySelector(`.url-errada${i}`).value;
             const regexUrlErrada = urlErrada.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
 
-            if (respostasErradas != "" && urlErrada == regexUrlErrada) {
+            if (respostaErrada != "" && urlErrada == regexUrlErrada) {
+                //inteirar o post
+                console.log("objetoAntesde interar perguntas erradas =", objetoToPost);
+                objetoToPost.questions[x].answers[i].text = respostaErrada;
+                objetoToPost.questions[x].answers[i].image = urlErrada;
+                objetoToPost.questions[x].answers[i].isCorrectAnswer = false;
                 caminhoValidacaoErradas++;
             }
         }
@@ -118,9 +199,10 @@ function validarPerguntas() {
 
 
 
-    // validar se todas as validaçoes foram cumpridas
+    // validar se todas as validaçoes foram cumpridas e abrir Tela 3.3
 
     console.log(validacao);
+
     if (validacao == 5) {
         console.log("validou")
         criarNiveis();
