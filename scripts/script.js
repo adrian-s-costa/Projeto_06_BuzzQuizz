@@ -108,8 +108,9 @@ let quantCertas = 0
 function comparador(){
     return Math.random() -0.5;
 }
-
+let uno = 0
 function mostrarQuiz() {
+    uno = 0
     quantCertas = 0
     conteudoPag.innerHTML = ""
     conteudoPag.innerHTML = `
@@ -183,7 +184,6 @@ function mostrarQuiz() {
 }
 
 let elementoClicado
-let uno = 0
 
 function respostaClicada(opcaoRespostaClicada){
     
