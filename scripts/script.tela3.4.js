@@ -4,13 +4,19 @@ const objetoToPost = {
     questions: [],
     levels: []
 }
+const meusIds = [];
 console.log(objetoToPost);
 function postDoMeuQuizz() {
 
     if (objetoToPost.title != "" && objetoToPost.image != "" && objetoToPost.questions.length == numPerguntas && objetoToPost.levels.length == numNiveis) {
         console.log("Entrou no IF do objeto to post", objetoToPost);
         const promessaDePost = axios.post("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes", objetoToPost);
-        promessaDePost.then((retorno) => { console.log("Seu post foi postado com sucesso", retorno); sucessoDoQuizz() });
+        promessaDePost.then((retorno) => {
+            console.log("Seu post foi postado com sucesso", retorno);
+            console.log(retorno.data.id);
+            meusIds.push(retorno.data.id);
+            sucessoDoQuizz();
+        });
         promessaDePost.catch((erro) => {
             console.log(erro.status); console.log("Erro no post do seu Quizz", erro);
         })
@@ -26,7 +32,7 @@ function sucessoDoQuizz() {
     <div class="flex-center">
         <div>
             <div class="relative">
-                <img class="sucesso-capa-do-quizz" src="../styles/openList.png" alt"capa do quizz" />
+                <img class="sucesso-capa-do-quizz" src=${objetoToPost.image} alt"capa do quizz" />
                 <p class="titulo-do-quizz-sucesso">Título principal do quizz</p>
             </div>
             <button class="acessar-quizz">Acessar Quizz</button>

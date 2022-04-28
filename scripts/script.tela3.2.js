@@ -127,12 +127,10 @@ function validarPerguntas() {
     if (respostasCorretasValidas.length === respostasCorretas.length) {
         //inteirar o post
         let contador = 0;
-        let contadorAnswers = 0;
-        coresValidas.forEach(addHexa => {
-            objetoToPost.questions[contador].answers[contadorAnswers].text = addHexa;
-            objetoToPost.questions[contador].answers[contadorAnswers].isCorrectAnswer = true;
+        respostasCorretasValidas.forEach(addTitle => {
+            objetoToPost.questions[contador].answers[0].text = addTitle;
+            objetoToPost.questions[contador].answers[0].isCorrectAnswer = true;
             contador++;
-            contadorAnswers++;
         });
         validacao++
     }
@@ -154,11 +152,9 @@ function validarPerguntas() {
     if (urlsCorretasValidas.length == urlsCorretas.length) {
         //inteirar o post
         let contador = 0;
-        let contadorAnswers = 0;
         urlsCorretasValidas.forEach(addUrl => {
-            objetoToPost.questions[contador].answers[contadorAnswers].text = addUrl;
+            objetoToPost.questions[contador].answers[0].image = addUrl;
             contador++;
-            contadorAnswers++;
         });
         validacao++;
     }
@@ -181,10 +177,19 @@ function validarPerguntas() {
 
             if (respostaErrada != "" && urlErrada == regexUrlErrada) {
                 //inteirar o post
+                objetoToPost.questions[x].answers.push(
+                    {
+                        text: "",
+                        image: "",
+                        isCorrectAnswer: ""
+                    }
+                )
+
                 console.log("objetoAntesde interar perguntas erradas =", objetoToPost);
-                objetoToPost.questions[x].answers[i].text = respostaErrada;
-                objetoToPost.questions[x].answers[i].image = urlErrada;
-                objetoToPost.questions[x].answers[i].isCorrectAnswer = false;
+                const k = (objetoToPost.questions[x].answers.length) - 1;
+                objetoToPost.questions[x].answers[k].text = respostaErrada;
+                objetoToPost.questions[x].answers[k].image = urlErrada;
+                objetoToPost.questions[x].answers[k].isCorrectAnswer = false;
                 caminhoValidacaoErradas++;
             }
         }

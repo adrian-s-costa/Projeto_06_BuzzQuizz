@@ -50,21 +50,6 @@ function validarInfos() {
                                 text: "",
                                 image: "",
                                 isCorrectAnswer: ""
-                            },
-                            {
-                                text: "",
-                                image: "",
-                                isCorrectAnswer: ""
-                            },
-                            {
-                                text: "",
-                                image: "",
-                                isCorrectAnswer: ""
-                            },
-                            {
-                                text: "",
-                                image: "",
-                                isCorrectAnswer: ""
                             }]
                         });
                     }
